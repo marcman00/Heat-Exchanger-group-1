@@ -5,7 +5,7 @@ Created on Tue May 17 09:28:12 2016
 @author: Marcus
 """
 def heatExchanger():
-# run all functions
+# run all functions here
 
 ### Pseduocode shell
 def getInput():
