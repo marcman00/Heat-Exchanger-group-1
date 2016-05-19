@@ -17,11 +17,13 @@ class HeatExchanger():
     hot=""      # options given below in input
     given=""    # Tco or Tho
     Cp=0        # Heat capacity
-    
+
+# Marcus    
     def runAll():
     # Source functions, runs all the other functions
     
     ### Pseduocode shell
+# Gabriel
     def getInput():
         # All variables are set here.
         # Note that cp is the average of inlet and outlet temperatures
@@ -37,7 +39,7 @@ class HeatExchanger():
         
     def convertUnits(value):
         # convert AES to SI units
-        
+# Dan        
     def solveArea():
         # Calculates area from input
         
@@ -46,7 +48,7 @@ class HeatExchanger():
         
     def solveCost():
         # cost = $1000 * area (m^2)
-        
+# Marcus        
     def output(area, T, cost):
         # Displays solutions all in SI units
         
