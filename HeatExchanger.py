@@ -19,13 +19,19 @@ class HeatExchanger():
     Cp=0        # Heat capacity
     
     def __init__(self):
-        # Constructor
+        # Constructor, starts everything
         import numpy as np
+        import sys
+        runAll()
 # Marcus    
     def runAll():
     # Source functions, runs all the other functions
-    
-    ### Pseduocode shell
+        getInput()
+        T=solveT()
+        area=solveArea()
+        cost=solveCost(area)
+        output(area,T,cost)
+   
 # Gabriel
     def getInput():
         # All variables are set here.
@@ -48,9 +54,23 @@ class HeatExchanger():
         
     def solveT():
         # calculates Tco or Tho (whichever one was NOT given in getInput() )
+        # (Hint: You will need to determine the unspecified temperature from the first two listed equations.)
+        if given=="Tco":
+            cp=(Tco+Tci)/2
+            # something
+        else:
+            cp=(Tho+thi)/2
+            # something else
         
     def solveCost():
         # cost = $1000 * area (m^2)
+        
 # Marcus        
     def output(area, T, cost):
         # Displays solutions all in SI units
+        print("Surface Area=",area,"$m^2$")
+        if given=="Tco":
+            print("$T_ho$=",T,"K")
+        else:
+            print("$T_co$=",T,"K")
+        print("Cost= $"+str(cost))
