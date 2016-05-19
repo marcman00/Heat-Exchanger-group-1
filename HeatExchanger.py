@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue May 17 09:28:12 2016
-
+Due on 
 @author: Group 1
 Project link here: http://apmonitor.com/che263/uploads/Main/heat_exchanger_project.pdf
 """
@@ -17,7 +17,10 @@ class HeatExchanger():
     hot=""      # options given below in input
     given=""    # Tco or Tho
     Cp=0        # Heat capacity
-
+    
+    def __init__(self):
+        # Constructor
+        import numpy as np
 # Marcus    
     def runAll():
     # Source functions, runs all the other functions
@@ -51,4 +54,3 @@ class HeatExchanger():
 # Marcus        
     def output(area, T, cost):
         # Displays solutions all in SI units
-        
