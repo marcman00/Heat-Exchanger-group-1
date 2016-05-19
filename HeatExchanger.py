@@ -6,6 +6,17 @@ Created on Tue May 17 09:28:12 2016
 Project link here: http://apmonitor.com/che263/uploads/Main/heat_exchanger_project.pdf
 """
 class HeatExchanger():
+    # Variables that are given in getInput() and then used in another function are declared here
+    units=""    # aes or si
+    U=0         # Heat Transfer Coefficient
+    Tci=0       # T cold fluid, in
+    Thi=0       # T hot fluid, in
+    mc=0        # flow rate cold fluid
+    mh=0        # flow rate hot fluid
+    cold=""     # options given below in input
+    hot=""      # options given below in input
+    given=""    # Tco or Tho
+    Cp=0        # Heat capacity
     
     def runAll():
     # Source functions, runs all the other functions
