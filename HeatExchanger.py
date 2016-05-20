@@ -15,7 +15,6 @@ class HeatExchanger():
     cold=""     # options given below in input
     hot=""      # options given below in input
     given=""    # T_co or T_ho
-    Cp=0        # Heat capacity
     
     def __init__(self):
         # Constructor, starts everything
