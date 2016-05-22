@@ -5,25 +5,28 @@ Due on Tue May 31 9:00am
 Project link here: http://apmonitor.com/che263/uploads/Main/heat_exchanger_project.pdf
 """
 class HeatExchanger():
-    # Variables that are given in getInput() and then used in another function are declared here
-    units=""    # aes or si
-    U=0         # Heat Transfer Coefficient
-    T_ci=0       # T cold fluid, in
-    T_hi=0       # T hot fluid, in
-    m_c=0        # flow rate cold fluid
-    m_h=0        # flow rate hot fluid
-    cold=""     # options given below in input
-    hot=""      # options given below in input
-    given=""    # T_co or T_ho
     
     def __init__(self):
-        # Constructor, starts everything
+        # Import packages
         import numpy as np
         import sys
+        
+        # Instance variables that are given in getInput() and then used in another function are declared here
+        self.units=""    # aes or si
+        self.U=0         # Heat Transfer Coefficient
+        self.T_ci=0       # T cold fluid, in
+        self.T_hi=0       # T hot fluid, in
+        self.m_c=0        # flow rate cold fluid
+        self.m_h=0        # flow rate hot fluid
+        self.cold=""     # options given below in input
+        self.hot=""      # options given below in input
+        self.given=""    # T_co or T_ho
+        
+        # Run the program
         runAll()
 # Marcus    
-    def runAll():
-    # Source functions, runs all the other functions
+    def runAll(self):
+    # Runs all the other functions
         getInput()
         T=solveT()
         area=solveArea()
@@ -31,7 +34,7 @@ class HeatExchanger():
         output(area,T,cost)
    
 # Gabriel
-    def getInput():
+    def getInput(self):
         # Variables are set here.
     """user can specify:
             aes or si units
@@ -40,39 +43,43 @@ class HeatExchanger():
             Hot: same options as cold
     """
     
-    def isValid(value):
+    def isValid(self,value):
         # checks if a number is negative. If so, returns error message and exits program.    
         
-    def convertUnits(value):
+    def convertUnits(self,value):
         # convert AES to SI units
+        return newValue
 # Dan        
-    def solveArea():
+    def solveArea(self):
     # Calculates area from input
     
         return area
         
-    def solveT():
+    def solveT(self):
     # calculates Tco or Tho (whichever one was NOT given in getInput() )
-        # (Hint: You will need to determine the unspecified temperature from the first two listed equations.)
+    # (Hint: You will need to determine the unspecified temperature from the first two listed equations.)
+        
         # Cp is the average of inlet and outlet temperatures
-        if given=="T_co":
-            Cp=(T_co+T_ci)/2
+        if self.given=="T_co":
+            Cp=(self.T_co+self.T_ci)/2
             # something
-        else:
-            Cp=(T_ho+T_hi)/2
+        elif self.given=="T_ho":
+            Cp=(self.T_ho+self.T_hi)/2
             # something else
+        else:
+            print("Something, somewhere, went horribly wrong.")
         return T
         
-    def solveCost():
+    def solveCost(self):
         # cost = $1000 * area (m^2)
         
         return cost
         
 # Marcus        
-    def output(area, T, cost):
+    def output(self, area, T, cost):
         # Displays solutions all in SI units
         print("Surface Area=",area,"$m^2$")
-        if given=="T_co":
+        if self.given=="T_co":
             print("T_ho=",T,"K")
         else:
             print("T_co=",T,"K")
