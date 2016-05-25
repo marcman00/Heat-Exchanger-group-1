@@ -5,7 +5,7 @@ Due on Tue May 31 9:00am
 Project link here: http://apmonitor.com/che263/uploads/Main/heat_exchanger_project.pdf
 """
 class HeatExchanger():
-    
+   # Marcus     
     def __init__(self):
         # Import packages
         import numpy as np
@@ -21,10 +21,9 @@ class HeatExchanger():
         self.cold=""     # options given below in input
         self.hot=""      # options given below in input
         self.given=""    # T_co or T_ho
-        
         # Run the program
         runAll()
-# Marcus    
+
     def runAll(self):
     # Runs all the other functions
         getInput()
@@ -78,7 +77,7 @@ class HeatExchanger():
 # Marcus        
     def output(self, area, T, cost):
         # Displays solutions all in SI units
-        print("Surface Area=",area,"$m^2$")
+        print("Surface Area=",area,"m^2")
         if self.given=="T_co":
             print("T_ho=",T,"K")
         else:
