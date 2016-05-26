@@ -52,13 +52,25 @@ class HeatExchanger():
     def solveArea(self):
     # Calculates area from input
     
+     #Correction Factor 'F' as a function of 'R' and 'P'
+            R = (self.T_hi-self.T_ho)/(self.T_co-self.T_ci)
+            P = (self.T_co-self.T_ci)/(self.T_hi-self.T_ci)
+        
+            F = (np.sqrt(R**2 +1)/(R-1)) * \
+                np.log((1-P)/(1-P*R))/ \
+                np.log((2-P*(R+1-np.sqrt(R**2 +1)))/(2-P*(R+1+np.sqrt(R**2 +1))))
+        
+            #Log Mean Temperature Difference
+            T_logmean = (dT1 - dT2)/np.log(dT2/dT1)
+        
+            #Caluclate and Return Area
+            area = q/(F*self.U*T_logmean) #m^2
+            return (area)
+    
         return area
         
-    def solveT(self):
-    # calculates Tco or Tho (whichever one was NOT given in getInput() )
-    # (Hint: You will need to determine the unspecified temperature from the first two listed equations.)
-        
-        # Cp is the average of inlet and outlet temperatures
+    def getCp(self):
+       # Cp is the average of inlet and outlet temperatures
         if self.given=="T_co":
             Cp=(self.T_co+self.T_ci)/2
             # something
@@ -66,11 +78,35 @@ class HeatExchanger():
             Cp=(self.T_ho+self.T_hi)/2
             # something else
         else:
-            print("Something, somewhere, went horribly wrong.")
+            print("Cp calculation went wrong")
+            
+    def solveT(self):
+       """ Problem here, there can only be 1 return in a function"""
+    # calculates Tco or Tho (whichever one was NOT given in getInput() )
+        Cp=getCp()
+        #To do!! define mh, mc
+        
+        #Solve for Tco or Tho
+        if getInput() == "T_ho":
+            T_co = mh*Cp*(T_hi-T_ho)/(mc*Cp) + T_ci
+            return T_co
+        else:
+            T_ho = -mc*Cp(T_co-T_ci)/(mh*Cp) + T_hi
+            return T_ho
+        
+        #Solve for Change in Temp 1 and 2
+        dT1 = T_hi - T_co
+        dT2 = T_ho - T_ci
+        
+        
+        #Solve for Heat Transfer Rate 'q'
+        q = mh*Cp*(T_co-T_ci)
+            
         return T
         
-    def solveCost(self):
+    def solveCost(self,area):
         # cost = $1000 * area (m^2)
+        cost=1000*area # in USD
         
         return cost
         
