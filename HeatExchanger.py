@@ -83,15 +83,14 @@ class HeatExchanger():
     def solveT(self):
        """ Problem here, there can only be 1 return in a function"""
     # calculates Tco or Tho (whichever one was NOT given in getInput() )
-        Cp=getCp()
-        #To do!! define mh, mc
+        #To do!! define m_c, m_h, Cp_h, Cp_c
         
         #Solve for Tco or Tho
         if getInput() == "T_ho":
-            T_co = mh*Cp*(T_hi-T_ho)/(mc*Cp) + T_ci
+            T_co = m_h*Cp_h*(T_hi-T_ho)/(m_c*Cp_c) + T_ci
             return T_co
         else:
-            T_ho = -mc*Cp(T_co-T_ci)/(mh*Cp) + T_hi
+            T_ho = -m_c*Cp_c*(T_co-T_ci)/(m_h*Cp_h) + T_hi
             return T_ho
         
         #Solve for Change in Temp 1 and 2
@@ -100,7 +99,7 @@ class HeatExchanger():
         
         
         #Solve for Heat Transfer Rate 'q'
-        q = mh*Cp*(T_co-T_ci)
+        q = m_h*Cp_h*(T_co-T_ci)
             
         return T
         
