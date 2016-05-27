@@ -33,21 +33,51 @@ class HeatExchanger():
         output(area,T,cost)
    
 # Gabriel
-     def getInput(self,units,InletTemperature,Substance):
-        # Variables are set here.
+      # def getInput(self)
+   
+   def Units(self):  # Variables are set here.
         AES = "American Engineering System"
         SI = "System International"
-
-        Units_Sys = input("What measurement system would you like to use? AES or SI")
-       # Mass_Units = input("Specify the units of mass" ) #AES = lbs or tons, SI = kg or ???
-        Temp_Units = input("Specify inlet temperature units")
-        Units_Mass = input("Please specify the units you would like to use") #K,C,F,R
-        Stream_1_in_cold = input("A number") #FLOAT FUNCTION?
-        Stream_2_in_hot = input(float(x)) #Store values in an array so that it all flows together
+        Units = input("What measurement system would you like to use? AES or SI")
+        #Temp_Units = input("Specify inlet temperature units")
+        #Units_Mass = input("Please specify the units you would like to use") #K,C,F,R
+       # Stream_1_in_cold = input("A number") #FLOAT FUNCTION?
+        #Stream_2_in_hot = input(float(x)) #Store values in an array so that it all flows together
         
-        u_aes_mass1 = "lbs"
-        u_aes_mass2 = "tons"
-        u_si_mass = "kg"
+       # u_aes_mass1 = "lbs"
+       # u_aes_mass2 = "tons"
+       # u_si_mass = "kg"  
+        
+    def getSubstance(self):
+        print("The available fluids are Water,R134a,Ethanol,2,2,4-trimethylpentane")
+        print("Use W,R134a,Ethanol, or TMP")
+        #Liquid = np.empty()
+        #Water = Liquid[0]
+        #R134a = Liquid[1]
+        #Ethanol = Liquid[2]
+        #tryimethylpethane = Liquid[3]
+        #add float function in here
+        self.cold = input("What substance will you choose as your cooling stream?")
+        self.hot = input("What substance will you choose as your heating stream?")
+        return self.T_ci, self.T_hi
+        
+    def getLiquidcold(self):
+        # Liquids = np.empty(2)
+        if Units == AES:
+            self.m_c = input("Define flow rate in lbs./s")
+            self.T_ci =  input("Define inlet temperature in degrees Farenheit(F)")
+        else:
+            self.m_c = input("Define flow rate in kg/s")
+            self.T_ci = input("Define inlet temperature in degrees Celsius")
+    def getLiquidhot(self):  
+        if Units == AES:
+            self.m_h = input("Define flow rate in lbs./s")
+            self.T_hi =  input("Define inlet temperature in degrees Farenheit(F)")
+        else:
+            self.m_h = input("Define flow rate in kg/s")
+            self.T_hi = input("Define inlet temperature in degrees Celsius")
+        
+  
         
     #Might need some if elif statements in here.
     """user can specify: #define each of these inputs as separate functions, getTemp, getMass, getflowrate, getunits,getmaterial, etc. 
@@ -60,10 +90,11 @@ class HeatExchanger():
     
     def isValid(self,value):
         # checks if a number is negative. If so, returns error message and exits program.    
-        
-    def convertUnits(self,value):
-        # convert AES to SI units
-        return newValue
+        # exit the program and restart
+    
+    def isValid(self,value):
+        # checks if a number is negative. If so, returns error message and exits program.    
+
 # Dan        
     def solveArea(self):
     # Calculates area from input
