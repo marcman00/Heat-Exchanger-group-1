@@ -33,14 +33,30 @@ class HeatExchanger():
         output(area,T,cost)
    
 # Gabriel
-    def getInput(self):
+     def getInput(self,units,InletTemperature,Substance):
         # Variables are set here.
-    """user can specify:
+        AES = "American Engineering System"
+        SI = "System International"
+
+        Units_Sys = input("What measurement system would you like to use? AES or SI")
+       # Mass_Units = input("Specify the units of mass" ) #AES = lbs or tons, SI = kg or ???
+        Temp_Units = input("Specify inlet temperature units")
+        Units_Mass = input("Please specify the units you would like to use") #K,C,F,R
+        Stream_1_in_cold = input("A number") #FLOAT FUNCTION?
+        Stream_2_in_hot = input(float(x)) #Store values in an array so that it all flows together
+        
+        u_aes_mass1 = "lbs"
+        u_aes_mass2 = "tons"
+        u_si_mass = "kg"
+        
+    #Might need some if elif statements in here.
+    """user can specify: #define each of these inputs as separate functions, getTemp, getMass, getflowrate, getunits,getmaterial, etc. 
             aes or si units
             U, T_ci, T_hi, m_c, m_h, T_co or T_ho
             Cold: water or 1,1,1,2-Tetrafluoroethane or ethanol or 2,2,4-trimethylpentane
             Hot: same options as cold
-    """
+            # Need to import thermophysical data to see if substance is a fluid at said temperature and pressure"""
+
     
     def isValid(self,value):
         # checks if a number is negative. If so, returns error message and exits program.    
