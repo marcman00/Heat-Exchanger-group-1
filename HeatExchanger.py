@@ -32,13 +32,14 @@ class HeatExchanger():
         cost=solveCost(area)
         output(area,T,cost)
    
-# Gabriel
-      # def getInput(self)
+Gabriel
+   # def getInput(self)
    
-   def Units(self):  # Variables are set here.
-        AES = "American Engineering System"
-        SI = "System International"
-        Units = input("What measurement system would you like to use? AES or SI")
+    def Units(self):
+            AES = "American Engineering System"
+            SI = "System International"
+            Units = input("What measurement system would you like to use? AES or SI")
+            #print error and restart function if not AES or SI
         #Temp_Units = input("Specify inlet temperature units")
         #Units_Mass = input("Please specify the units you would like to use") #K,C,F,R
        # Stream_1_in_cold = input("A number") #FLOAT FUNCTION?
@@ -61,21 +62,37 @@ class HeatExchanger():
         self.hot = input("What substance will you choose as your heating stream?")
         return self.T_ci, self.T_hi
         
-    def getLiquidcold(self):
+    def getLiquid(self):
         # Liquids = np.empty(2)
-        if Units == AES:
-            self.m_c = input("Define flow rate in lbs./s")
-            self.T_ci =  input("Define inlet temperature in degrees Farenheit(F)")
+        #define units as valid as we are running them through the program.
+        while Units == AES:
+            self.m_c = float(input("Define cooling flow rate in lbs./s"))
+            self.T_ci =  float(input("Define cooling inlet temperature in degrees Farenheit(F)"))
+            self.m_h = float(input("Define heating flow rate in lbs./s"))
+            self.T_hi =  float(input("Define heating inlet temperature in degrees Farenheit(F)"))
+            self.U = float(input("Define heat transfer coefficient in Btu/ft2 hr oF"))
         else:
-            self.m_c = input("Define flow rate in kg/s")
-            self.T_ci = input("Define inlet temperature in degrees Celsius")
-    def getLiquidhot(self):  
+            self.m_c = float(input("Define cooling flow rate in kg/s"))
+            self.T_ci = float(input("Define cooling inlet temperature in degrees Celsius"))
+            self.m_h = float(input("Define heating flow rate in kg/s"))
+            self.T_hi = float(input("Define heating inlet temperature in degrees Celsius"))
+            self.U = float(input("Define heat transfer coefficient in W/m2 K:"))
+   
+    def convertUnits(self):
+        # convert AES to SI units
         if Units == AES:
-            self.m_h = input("Define flow rate in lbs./s")
-            self.T_hi =  input("Define inlet temperature in degrees Farenheit(F)")
+            self.m_c = self.m_c * 0.453592
+            self.T_ci =  (self.T_ci + 459.67) * 5/9
+            self.m_h = self.m_h * 0.453592
+            self.T_hi = (self.T_hi + 459.67) * 5/9
+            self.U = self.U * 5.6784   
         else:
-            self.m_h = input("Define flow rate in kg/s")
-            self.T_hi = input("Define inlet temperature in degrees Celsius")
+           # self.m_c = self.m_c
+            self.T_ci = self.T_ci + 273.15
+            #self.m_h = self.m_h
+            self.T_hi = self.T_hi + 273.15
+            #self.U = self.U
+        #return all converted inputs
         
   
         
@@ -88,13 +105,23 @@ class HeatExchanger():
             # Need to import thermophysical data to see if substance is a fluid at said temperature and pressure"""
 
     
-    def isValid(self,value):
-        # checks if a number is negative. If so, returns error message and exits program.    
-        # exit the program and restart
-    
-    def isValid(self,value):
-        # checks if a number is negative. If so, returns error message and exits program.    
-
+    def isValid(self,value): #see if the liquids are valid at the given temperatures
+        while self.T_ci<=0 and self.T_hi<=0:
+            print("Invalid Temperatures. Program restarting")
+            break
+        
+         #Heating must be greater than cooling
+            
+        
+  
+        
+    #Might need some if elif statements in here.
+    """user can specify: #define each of these inputs as separate functions, getTemp, getMass, getflowrate, getunits,getmaterial, etc. 
+            aes or si units
+            U, T_ci, T_hi, m_c, m_h, T_co or T_ho
+            Cold: water or 1,1,1,2-Tetrafluoroethane or ethanol or 2,2,4-trimethylpentane
+            Hot: same options as cold
+            # Need to import thermophysical data to see if substance is a fluid at said temperature and pressure"""
 # Dan        
     def solveArea(self):
     # Calculates area from input
