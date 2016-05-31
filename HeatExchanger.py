@@ -4,7 +4,7 @@ Due on Tue May 31 9:00am
 @author: Group 1-- Marcus Reynolds, Gabriel Poulson, Dan Addington
 Project link here: http://apmonitor.com/che263/uploads/Main/heat_exchanger_project.pdf
 """
-class HeatExchanger():
+class HeatExchanger(): #functions defined within in a class to make it easier to run the calculations
    # Marcus     
     def __init__(self):
         # Import packages
@@ -12,6 +12,7 @@ class HeatExchanger():
         import sys
         
         # Instance variables that are given in getInput() and then used in another function are declared here
+   
         self.units=""    # aes or si
         self.U=0         # Heat Transfer Coefficient
         self.T_ci=0       # T cold fluid, in
@@ -33,7 +34,7 @@ class HeatExchanger():
         output(area,T,cost)
    
 Gabriel
-   # def getInput(self)
+   # def getInput(self) for all relevant variables (i.e. temperatures, mass flow rates, etc.)
    
     def Units(self):
             AES = "American Engineering System"
